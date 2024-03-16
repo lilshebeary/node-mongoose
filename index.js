@@ -9,6 +9,7 @@ const connect = mongoose.connect(url, {
 });
 
 connect.then(() => {
+    console.log('Connected correctly to server');
     const newCampsite = new Campsite({
         name: 'React Lake Campground',
         description: 'test'
@@ -23,7 +24,7 @@ connect.then(() => {
         console.log(campsites);
         return Campsite.deleteMany();
     })
-    .then(campsites => {
+    .then(() => {
         return mongoose.connection.close();
     })
     .catch(err => {
